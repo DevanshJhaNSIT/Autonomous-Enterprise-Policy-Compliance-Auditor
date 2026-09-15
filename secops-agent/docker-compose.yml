@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  secops-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: secops-agent-service
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-mock-key}
+      - MODEL_NAME=gpt-4o
+      - EMBEDDING_MODEL=text-embedding-3-small
+      - CHROMA_PERSIST_DIR=/app/data/chroma_db
+      - HOST=0.0.0.0
+      - PORT=8000
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
