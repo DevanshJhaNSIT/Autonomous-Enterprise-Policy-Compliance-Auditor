@@ -1,0 +1,40 @@
+{
+  "framework": "ragas",
+  "total_test_cases": 5,
+  "overall_metrics": {
+    "faithfulness": 0.7543,
+    "answer_relevancy": 0.7409
+  },
+  "test_case_results": [
+    {
+      "test_case_id": "TC-01",
+      "question": "How do I mitigate an SSH brute force attack from IP 192.168.1.105 targeting root?",
+      "faithfulness": 0.7973,
+      "answer_relevancy": 0.9071
+    },
+    {
+      "test_case_id": "TC-02",
+      "question": "What steps are required when pkexec privilege escalation occurs?",
+      "faithfulness": 0.7121,
+      "answer_relevancy": 0.7833
+    },
+    {
+      "test_case_id": "TC-03",
+      "question": "How to handle firewall egress drop alerts for suspicious outbound port 4444?",
+      "faithfulness": 0.9348,
+      "answer_relevancy": 0.6643
+    },
+    {
+      "test_case_id": "TC-04",
+      "question": "What is the recommended policy for root password authentication?",
+      "faithfulness": 0.6053,
+      "answer_relevancy": 0.6405
+    },
+    {
+      "test_case_id": "TC-05",
+      "question": "How to clean up malicious scripts spawned in /tmp by compromised accounts?",
+      "faithfulness": 0.7222,
+      "answer_relevancy": 0.7093
+    }
+  ]
+}

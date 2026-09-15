@@ -1,0 +1,62 @@
+[
+  {
+    "timestamp": "2026-09-15T21:45:10Z",
+    "alert_id": "ALT-9901",
+    "event_type": "SSH_BRUTE_FORCE",
+    "source_ip": "192.168.1.105",
+    "destination_ip": "10.0.4.12",
+    "target_user": "root",
+    "fail_count": 42,
+    "status": "FAILED",
+    "raw_log": "Sep 15 21:45:10 prod-app-01 sshd[14205]: Failed password for root from 192.168.1.105 port 54822 ssh2",
+    "description": "Spike in SSH authentication failures from external IP targeting root user account."
+  },
+  {
+    "timestamp": "2026-09-15T21:46:02Z",
+    "alert_id": "ALT-9902",
+    "event_type": "PRIVILEGE_ESCALATION",
+    "source_ip": "192.168.1.105",
+    "destination_ip": "10.0.4.12",
+    "target_user": "deploy",
+    "fail_count": 1,
+    "status": "SUCCESS",
+    "raw_log": "Sep 15 21:46:02 prod-app-01 sudo[14890]: deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/pkexec /bin/bash",
+    "description": "Successful sudo invocation of pkexec bash shell by non-admin user following credential reuse."
+  },
+  {
+    "timestamp": "2026-09-15T21:47:15Z",
+    "alert_id": "ALT-9903",
+    "event_type": "FIREWALL_RULE_VIOLATION",
+    "source_ip": "203.0.113.88",
+    "destination_ip": "10.0.4.15",
+    "target_user": "unknown",
+    "fail_count": 15,
+    "status": "DENIED",
+    "raw_log": "Sep 15 21:47:15 edge-fw-01 kernel: [FW-DROP] IN=eth0 OUT= MAC=00:00:5e:00:53:00 SRC=203.0.113.88 DST=10.0.4.15 PROTO=TCP SPT=49152 DPT=4444",
+    "description": "Outbound egress connection blocked to external command-and-control port 4444."
+  },
+  {
+    "timestamp": "2026-09-15T21:50:00Z",
+    "alert_id": "ALT-9904",
+    "event_type": "UNAUTHORIZED_SUDO_ACCESS",
+    "source_ip": "198.51.100.42",
+    "destination_ip": "10.0.2.8",
+    "target_user": "admin",
+    "fail_count": 5,
+    "status": "FAILED",
+    "raw_log": "Sep 15 21:50:00 db-master-01 sudo[15102]: admin : 3 incorrect password attempts ; TTY=pts/0 ; COMMAND=/usr/bin/su",
+    "description": "Multiple failed sudo password attempts on database master host."
+  },
+  {
+    "timestamp": "2026-09-15T21:55:30Z",
+    "alert_id": "ALT-9905",
+    "event_type": "SUSPICIOUS_EXECUTION",
+    "source_ip": "192.168.1.105",
+    "destination_ip": "10.0.4.12",
+    "target_user": "deploy",
+    "fail_count": 0,
+    "status": "SUSPICIOUS",
+    "raw_log": "Sep 15 21:55:30 prod-app-01 systemd[1]: Created slice User Slice of root ; spawned payload /tmp/.hidden_script.sh",
+    "description": "Execution of hidden shell script from /tmp directory under root privileges."
+  }
+]
